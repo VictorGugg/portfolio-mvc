@@ -8,11 +8,14 @@
 
 	<h3>Ajouter une image</h3>
 
-	<form name="admin_form" id="admin_form" method="post" action="" enctype="multipart/form-data">
+	<form
+		name="admin_form" id="admin_form" method="post" action="" enctype="multipart/form-data">
 
-		<label for="new_image">Choisissez votre image :</label><br/>
-		<input type="file" id="new_image" name="new_image" required multiple/>
-		<br/><br/>
+		{#
+		        TODO : allow image upload
+		        <label for="new_image">Choisissez votre image :</label><br/>
+				<input type="file" id="new_image" name="new_image" required multiple/>
+				<br/><br/> #}
 
 		<label for="title">Le nom de votre image :</label><br/>
 		<input type="text" id="title" name="title" maxlength="200" size="80" required/>
