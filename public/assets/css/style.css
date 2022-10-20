@@ -1,5 +1,34 @@
 body {
-    color: #302d49;
+    color: #45384c;
 }
 
-#post
+header {
+    text-align: center;
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(230, 223, 228);
+    padding: 1rem; 
+    border: 2px solid rgb(169, 151, 151);
+    margin: 2rem;
+  }
+
+.post p{
+    border-top: 2px solid rgb(178, 155, 171);
+    width: 60%;
+    text-align: center;
+}
+
+  div{
+    margin: auto;
+  }
+
+  div img{
+    padding: 1rem;
+  }
+
+  /* todo: gerer les ecarts entre images textes et l'article en soi */
+  
