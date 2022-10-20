@@ -1,0 +1,41 @@
+{# _form component administrator side
+    use it to add image(s) to the project/server directory
+    each image comes with a title (which will serve as alt)
+    and an optionnal description-text
+ #}
+
+<section id="admin_form">
+
+	<h3>Ajouter une image</h3>
+
+	<form
+		name="admin_form" id="admin_form" method="post" action="" enctype="multipart/form-data">
+
+		{#
+				TODO : allow image upload
+				<label for="new_image">Choisissez votre image :</label><br/>
+				<input type="file" id="new_image" name="new_image" required multiple/>
+				<br/><br/>
+			#}
+
+		<input type="hidden" value="{{ image.id }}" name="id">
+
+		<label for="title">Le titre de votre image :</label><br/>
+		<input type="text" value="{{ image.title }}" id="title" name="title" maxlength="200" size="80" required/>
+		<br/><br/>
+
+		<label for="description">La description de votre image :</label><br/>
+		<textarea id="description" name="description" value="{{ image.description }}" maxlength="1000" rows="8" cols="75"></textarea>
+		<br/><br/>
+
+		<input type="submit" name="submit" value="Upload"/>
+
+	</form>
+
+</section>
+
+{#
+    TODO : get the URL from the stored image and store it in the "url" field of the image table
+    TODO : store the author(=admin) ID of the image in the "user_ID" field of the image table
+    TODO : define the action path of the form
+#}

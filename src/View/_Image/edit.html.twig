@@ -1,0 +1,8 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	<h1>Edit image
+		{{ image.title }}</h1>
+	{% include '_Image/_form.html.twig' %}
+	<a href="/images/show?id={{ image.id }}">Back</a>
+{% endblock %}

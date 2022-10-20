@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	<h1>Image
+		{{ image.title }}</h1>
+	<p>{{ image.id }}.
+		{{ image.title }}</p>
+	<a href="/images/edit?id={{ image.id }}">Edit</a>
+	<form action="/images/delete" method="POST">
+		<input type="hidden" name="id" value="{{ image.id }}">
+		<button>Delete</button>
+	</form>
+	<a href="/images">Back</a>
+{% endblock %}
