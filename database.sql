@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `portfolio`.`user` (
   `password` VARCHAR(45) NOT NULL,
   `is_admin` TINYINT(1) UNSIGNED NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC))
 ENGINE = InnoDB;
 
 
@@ -45,8 +45,8 @@ CREATE TABLE IF NOT EXISTS `portfolio`.` article` (
   `created_at` TIMESTAMP NOT NULL DEFAULT PARENT_TIMESTAMP COMMENT 'Times stamp? 0?',
   `user_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`, `user_id`),
-  UNIQUE INDEX `id article_UNIQUE` (`id` ASC) VISIBLE,
-  INDEX `fk_ article_user_idx` (`user_id` ASC) VISIBLE,
+  UNIQUE INDEX `id article_UNIQUE` (`id` ASC),
+  INDEX `fk_ article_user_idx` (`user_id` ASC),
   CONSTRAINT `fk_ article_user`
     FOREIGN KEY (`user_id`)
     REFERENCES `portfolio`.`user` (`id`)
@@ -67,8 +67,8 @@ CREATE TABLE IF NOT EXISTS `portfolio`.`image` (
   `description` VARCHAR(1000) NOT NULL,
   `user_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`, `user_id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  INDEX `fk_image_user1_idx` (`user_id` ASC) VISIBLE,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  INDEX `fk_image_user1_idx` (`user_id` ASC),
   CONSTRAINT `fk_image_user1`
     FOREIGN KEY (`user_id`)
     REFERENCES `portfolio`.`user` (`id`)
@@ -88,8 +88,8 @@ CREATE TABLE IF NOT EXISTS `portfolio`.` article_has_image` (
   `image_id` INT UNSIGNED NOT NULL,
   `image_user_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (` article_id`, ` article_user_id`, `image_id`, `image_user_id`),
-  INDEX `fk_ article_has_image_image1_idx` (`image_id` ASC, `image_user_id` ASC) VISIBLE,
-  INDEX `fk_ article_has_image_ article1_idx` (` article_id` ASC, ` article_user_id` ASC) VISIBLE,
+  INDEX `fk_ article_has_image_image1_idx` (`image_id` ASC, `image_user_id` ASC),
+  INDEX `fk_ article_has_image_ article1_idx` (` article_id` ASC, ` article_user_id` ASC),
   CONSTRAINT `fk_ article_has_image_ article1`
     FOREIGN KEY (` article_id` , ` article_user_id`)
     REFERENCES `portfolio`.` article` (`id` , `user_id`)
