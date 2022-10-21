@@ -10,6 +10,7 @@ class ImageManager extends AbstractManager
 
     /**
      * Insert new image in database
+     * TODO add the URL of the image to store it in the db
      */
     public function insert(array $image): int
     {
@@ -24,6 +25,7 @@ class ImageManager extends AbstractManager
 
     /**
      * Update image in database
+     * TODO add the URL of the image to be able to update it
      */
     public function update(array $image): bool
     {

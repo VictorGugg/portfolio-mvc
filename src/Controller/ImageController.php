@@ -8,6 +8,7 @@ class ImageController extends AbstractController
 {
     /**
      * List images
+     * TODO : Display a miniature of the image
      */
     public function index(): string
     {
@@ -19,6 +20,7 @@ class ImageController extends AbstractController
 
     /**
      * Show informations for a specific image
+     * TODO : Display the image, the title, its description, date and author
      */
     public function show(int $id): string
     {

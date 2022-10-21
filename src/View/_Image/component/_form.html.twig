@@ -4,6 +4,13 @@
     and an optionnal description-text
  #}
 
+{#
+    TODO : allow image upload
+    <label for="new_image">Choisissez votre image :</label><br/>
+    <input type="file" id="new_image" name="new_image" required multiple/>
+    <br/><br/>
+#}
+
 <section id="admin_form">
 
 	<h3>Ajouter une image</h3>
@@ -11,12 +18,7 @@
 	<form
 		name="admin_form" id="admin_form" method="post" action="" enctype="multipart/form-data">
 
-		{#
-				TODO : allow image upload
-				<label for="new_image">Choisissez votre image :</label><br/>
-				<input type="file" id="new_image" name="new_image" required multiple/>
-				<br/><br/>
-			#}
+        {# Space for image/file upload #}
 
 		<input type="hidden" value="{{ image.id }}" name="id">
 
@@ -25,7 +27,8 @@
 		<br/><br/>
 
 		<label for="description">La description de votre image :</label><br/>
-		<textarea id="description" name="description" value="{{ image.description }}" maxlength="1000" rows="8" cols="75"></textarea>
+		<textarea id="description" name="description" value="{{ image.description }}"
+                    maxlength="1000" rows="8" cols="75"></textarea>
 		<br/><br/>
 
 		<input type="submit" name="submit" value="Upload"/>
