@@ -3,23 +3,37 @@
 
 {% block header %}
 <header>
-
 {# src image bienvenue #}
+<img src="https://picsum.photos/1200/300?grayscale" alt="image text exemple">
 <h1>Bienvenue</h1>
 </header>
 {% endblock %}
 
 
 {% block content %}
-    
+
+<section class="description">
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     {# <p>Find a complete CRUD example on <a href="/items">/items</a> page.</p> #}
+<button>Modifier la description</button>
+</section>
+
+<section class="add">
+<button>Ajouter un article</button>
+</section>
 
 <section class="post">
-{# image 1 post 1
-image 2 post 1
-image 3 post 1
-image 4 post 1 #}
+
+{# image 1 post 1, image 2 post 1
+image 3 post 1, image 4 post 1 #}
+<div>
+<img src="https://picsum.photos/200/300?grayscale" alt="image text exemple" class="article-1">
+<img src="https://picsum.photos/200/300?grayscale" alt="image text exemple" class="article-1">
+</div>
+<div>
+<img src="https://picsum.photos/200/300?grayscale" alt="image text exemple" class="article-1">
+<img src="https://picsum.photos/200/300?grayscale" alt="image text exemple" class="article-1"><br>
+</div>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
 <button>Modifier l'article</button>
 </section>
@@ -27,12 +41,19 @@ image 4 post 1 #}
 <section class="post">
 {# image 1 post 2
 image 2 post 2 #}
+<div>
+<img src="https://picsum.photos/200/?grayscale" alt="image text exemple">
+</div>
+<div>
+<img src="https://picsum.photos/200/?grayscale" alt="image text exemple"><br>
+</div>
 <p>Lorem ipsum dolor sit amet.</p>
 <button>Modifier l'article</button>
 </section>
 
 <section class="post">
 {# image 1 post 3 #}
+<div><img src="https://picsum.photos/600/200?grayscale" alt="image text exemple"><br></div>
 <p>-</p>
 <button>Modifier l'article</button>
 </section>
