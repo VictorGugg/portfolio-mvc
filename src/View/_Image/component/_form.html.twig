@@ -13,8 +13,6 @@
 
 <section id="admin_form">
 
-	<h3>Ajouter une image</h3>
-
 	<form
 		name="admin_form" id="admin_form" method="post" action="" enctype="multipart/form-data">
 
@@ -23,12 +21,18 @@
 		<input type="hidden" value="{{ image.id }}" name="id">
 
 		<label for="title">Le titre de votre image :</label><br/>
-		<input type="text" value="{{ image.title }}" id="title" name="title" maxlength="200" size="80" required/>
+		<input type="text" id="title" name="title" value="{{ image.title }}"
+                maxlength="200" size="80" required/>
+		<br/><br/>
+
+        <label for="url">L'url de votre image :</label><br/>
+		<input type="text" id="url" name="url" value="{{ image.url }}"
+                maxlength="200" size="80" required/>
 		<br/><br/>
 
 		<label for="description">La description de votre image :</label><br/>
 		<textarea id="description" name="description" value="{{ image.description }}"
-                    maxlength="1000" rows="8" cols="75"></textarea>
+                    maxlength="1000" rows="8" cols="75" required></textarea>
 		<br/><br/>
 
 		<input type="submit" name="submit" value="Upload"/>

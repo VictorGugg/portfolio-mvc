@@ -4,7 +4,9 @@
 	<h1>Image
 		{{ image.title }}</h1>
 	<p>{{ image.id }}.
-		{{ image.title }}</p>
+		{{ image.description }}</p>
+	<p>{{ image.id }}.
+		{{ image.url }}</p>
 	<a href="/images/edit?id={{ image.id }}">Edit</a>
 	<form action="/images/delete" method="POST">
 		<input type="hidden" name="id" value="{{ image.id }}">
