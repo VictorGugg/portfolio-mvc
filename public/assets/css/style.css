@@ -2,6 +2,7 @@ body {
     color: #45384c;
     font-family: 'Palatino', Georgia, 'Times New Roman', Times, serif;
     padding: 1rem;
+    background: linear-gradient(rgb(255, 255, 255), rgb(243, 234, 240));
 }
 
 header {
@@ -43,7 +44,7 @@ img {
     border-radius: 3px;
   }
 
-.post p{
+  .post p{
     border-top: 2px solid rgb(178, 155, 171);
     width: 60%;
     text-align: center;
@@ -74,9 +75,8 @@ img {
   button:hover{
     opacity: 0.5;
   }
-  
-  /*  TODO: -Mode nuit  */
  
+        /* -- RESPONSIVE -- */
   @media screen and (max-width: 900px) {
     .post {
     margin: 1rem;
@@ -103,3 +103,27 @@ img {
         max-width: 50%;
       }
     }
+
+              /* -- AUTOMATIC DARK MODE -- */
+     @media (prefers-color-scheme: dark) {
+      body {
+        background: linear-gradient(rgb(31, 31, 31), rgb(13, 13, 13));
+        color:rgba(170, 170, 170, 0.792);
+      }
+      .description{
+        border-color: rgb(100, 100, 100);
+      }
+      .post{
+        background: linear-gradient( rgb(31, 31, 31),rgb(58, 58, 58));
+        border-color: rgb(50, 50, 50);
+        color: 2px solid rgb(97, 97, 97); 
+      }
+      button, .post button{
+        color:rgba(196, 197, 198, 0.749);
+        background-color: hsl(0, 0%, 38%);
+        border-color: rgb(109, 109, 109);
+      }
+      .post p{
+        border-top: 2px solid rgba(111, 111, 111, 0.642);
+      }
+    } 
