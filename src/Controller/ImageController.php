@@ -6,83 +6,38 @@ use App\Model\ImageManager;
 
 final class ImageController extends AbstractController
 {
-    /** Creating empty variables matching the form input
-     * TODO add the url input
-     */
+    public const TITLE_INPUT = 'title';
+    public const DESCRIPTION_INPUT = 'description';
+    public const URL_INPUT = 'url';
 
-    // public $title = '';
-    // public $description = '';
-    // public $url = '';
+    public const DB_TITLE_MAX_LENGTH = 200;
+    public const DB_DESCRIPTION_MAX_LENGTH = 1000;
+    public const DB_URL_MAX_LENGTH = 2048;
 
-    /**
-     * Creating an errors array, to store potential errors
-     * and be able to report them to the user.
-     */
+    public function validateInput($inputType, $inputLength)
+    {
+        $errors = [];
+        if (
+            !isset($_POST["$inputType"])
+            || trim($_POST["$inputType"]) === ''
+            || strlen($_POST["$inputType"]) > $inputLength
+            // ! TODO make this RegEx functionnal
+            // || preg_match("^[a-zA-Z0-9.,:!?()\-\"'\s]*$^", $_POST["$inputType"])
+        ) {
+            $errors[$inputType] = true;
+        }
+        return $errors;
+    }
 
-    // public $errors = [];
-
-
-    /**
-     * Sanitization + error rendering function
-     */
-
-    // public function validation()
-    // {
-    //     if (
-            /* Checking for an input, other than only spaces, of 200 or less characters */
-        //     !isset($_POST['title'])
-        //     || trim($_POST['title']) === ''
-        //     || strlen($_POST['title']) > 200
-        // ) {
-        //     $errors[] = "title=1";
-        // } else {
-        //     return (string)$title = $this->sanitizeInput($_POST['title']);
-        // }
-
-        // if (
-            /* Checking for an input, other than only spaces, of 1.000 or less characters */
-        //     !isset($_POST['description'])
-        //     || trim($_POST['description']) === ''
-        //     || strlen($_POST['description']) > 1000
-        // ) {
-        //     $errors[] = "description=1";
-        // } else {
-        //     return (string)$description = $this->sanitizeInput($_POST['description']);
-        // }
-
-        // if (
-            /* Checking for an input, other than only spaces, of 2048 or less characters */
-        //     !isset($_POST['url'])
-        //     || trim($_POST['url']) === ''
-        //     || strlen($_POST['url']) > 2048
-        // ) {
-        //     $errors[] = "url=1";
-        // } else {
-        //     return (string)$url = $this->sanitizeInput($_POST['url']);
-        // }
-
-        /* Checking if there is errors and displaying the appropriate message(s) to the user */
-
-    //     if (!empty($errors)) {
-    //         $errorsJoined = join('&', $errors);
-    //         header("Location: /add.php?errors=1&" . $errorsJoined);
-    //     }
-
-    //     if (isset($_GET['errors'])) {
-    //         if (isset($_GET['title'])) {
-    //             echo "Please enter a valid title (200 characters max).<br>";
-    //         }
-
-    //         if (isset($_GET['description'])) {
-    //             echo "Please enter a valid lastname (1.000 characters max).<br>";
-    //         }
-
-    //         if (isset($_GET['url'])) {
-    //             echo "Please enter a valid url (2.048 characters max).<br>";
-    //         }
-    //     }
-    // }
-
+    public function validateInputs()
+    {
+        $errors = array_merge(
+            $this->validateInput(self::TITLE_INPUT, self::DB_TITLE_MAX_LENGTH),
+            $this->validateInput(self::DESCRIPTION_INPUT, self::DB_DESCRIPTION_MAX_LENGTH),
+            $this->validateInput(self::URL_INPUT, self::DB_URL_MAX_LENGTH)
+        );
+        return $errors;
+    }
 
     /**
      * List images
@@ -114,25 +69,27 @@ final class ImageController extends AbstractController
     public function edit(int $id): ?string
     {
         $imageManager = new ImageManager();
-        $image = $imageManager->selectOneById($id);
-
-        // Possibilité made in Yacine : factoriser en différentes fonctions
-        // $data = [];
-        // $data['title'] = resultOfMyValidation();
-        // $imageInstance->setProperties($data);
+        $updatedImage = $imageManager->selectOneById($id);
+        $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // $this->validation();
-            $imageManager->update($image);
-
-            header('Location: /images/show?id=' . $id);
-
-            // we are redirecting so we don't want any content rendered
-            return null;
+            // ! TODO think of validating that the id/image exists
+            $errors = $this->validateInputs();
+            if (empty($errors)) {
+                $imageManager->update([
+                    'id' => $this->sanitizeInput($_POST['id']),
+                    'title' => $this->sanitizeInput($_POST['title']),
+                    'description' => $this->sanitizeInput($_POST['description']),
+                    'url' => $this->sanitizeInput($_POST['url'])
+                ]);
+                header('Location: /images/show?id=' . $_POST['id']);
+                // we are redirecting so we don't want any content rendered
+                return '';
+            }
         }
-
         return $this->twig->render('_Image/edit.html.twig', [
-            'image' => $image,
+            'image' => $updatedImage,
+            'errors' => $errors
         ]);
     }
 
@@ -141,20 +98,23 @@ final class ImageController extends AbstractController
      */
     public function add(): ?string
     {
+        $imageManager = new ImageManager();
+        $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
-            $image = array_map('trim', $_POST);
-            // $this->validation();
-
-            // if validation is ok, insert and redirection
-            $imageManager = new ImageManager();
-            $id = $imageManager->insert($image);
-
-            header('Location:/images/show?id=' . $id);
-            return null;
+            $errors = $this->validateInputs();
+            if (empty($errors)) {
+                $id = $imageManager->insert([
+                    'title' => $this->sanitizeInput($_POST['title']),
+                    'description' => $this->sanitizeInput($_POST['description']),
+                    'url' => $this->sanitizeInput($_POST['url'])
+                ]);
+                header('Location: /images/show?id=' . $id);
+                return '';
+            }
         }
-
-        return $this->twig->render('_Image/add.html.twig');
+        return $this->twig->render('_Image/add.html.twig', [
+            'errors' => $errors
+        ]);
     }
 
     /**
@@ -162,6 +122,7 @@ final class ImageController extends AbstractController
      */
     public function delete(): void
     {
+        // ! TODO verify that ID exists
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
             $imageManager = new ImageManager();

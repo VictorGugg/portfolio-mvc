@@ -18,21 +18,36 @@
 
         {# Space for image/file upload #}
 
+        {# ! TODO Don't forget to add back "required" #}
+
 		<input type="hidden" value="{{ image.id }}" name="id">
+                {% if errors.id is defined %}
+                    <p>Please use a valid id (must match an exisiting input).</p>
+                {% endif %}
 
 		<label for="title">Le titre de votre image :</label><br/>
 		<input type="text" id="title" name="title" value="{{ image.title }}"
-                maxlength="200" size="80" required/>
+                maxlength="200" size="80"/><br>
+                {% if errors.title is defined %}
+                    <p>Please enter a valid title (200 characters max).</p>
+                {% endif %}
 		<br/><br/>
 
         <label for="url">L'url de votre image :</label><br/>
 		<input type="text" id="url" name="url" value="{{ image.url }}"
-                maxlength="200" size="80" required/>
+                maxlength="200" size="80"/><br>
+                {% if errors.url is defined %}
+                    <p>Please enter a valid url (2.048 characters max).</p>
+                {% endif %}
 		<br/><br/>
 
 		<label for="description">La description de votre image :</label><br/>
-		<textarea id="description" name="description" value="{{ image.description }}"
-                    maxlength="1000" rows="8" cols="75" required></textarea>
+		<textarea id="description" name="description"
+                    maxlength="1000" rows="8" cols="75"
+                >{{ image.description }}</textarea><br>
+                {% if errors.description is defined %}
+                    <p>Please enter a valid description (1.000 characters max).</p>
+                {% endif %}
 		<br/><br/>
 
 		<input type="submit" name="submit" value="Upload"/>
