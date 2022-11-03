@@ -76,7 +76,7 @@ final class ImageController extends AbstractController
             // ! TODO think of validating that the id/image exists
             $errors = $this->validateInputs();
             if (empty($errors)) {
-                $imageManager->update([
+                $updatedImage = $imageManager->update([
                     'id' => $this->sanitizeInput($_POST['id']),
                     'title' => $this->sanitizeInput($_POST['title']),
                     'description' => $this->sanitizeInput($_POST['description']),
@@ -113,6 +113,7 @@ final class ImageController extends AbstractController
             }
         }
         return $this->twig->render('_Image/add.html.twig', [
+            // TODO add the user input to the return, to save the user input in the form.
             'errors' => $errors
         ]);
     }

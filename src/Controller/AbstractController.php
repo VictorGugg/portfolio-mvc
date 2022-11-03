@@ -32,6 +32,6 @@ abstract class AbstractController
      */
     protected function sanitizeInput($userInput)
     {
-        return htmlspecialchars(trim(stripslashes($userInput)));
+        return trim(stripslashes(htmlspecialchars($userInput, ENT_NOQUOTES)));
     }
 }
