@@ -1,0 +1,18 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	<h1>Images</h1>
+	<ul>
+		{% for image in images %}
+			<li>
+				<a href="/images/show?id={{ image.id }}">
+					{{ image.id }}
+					.
+					{{ image.title }}</a>
+			</li>
+		{% else %}
+			<li>Nothing to display</li>
+		{% endfor %}
+	</ul>
+	<a href="/images/add">Ajouter</a>
+{% endblock %}

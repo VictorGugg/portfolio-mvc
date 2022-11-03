@@ -1,0 +1,63 @@
+{# _form component administrator side
+    use it to add image(s) to the project/server directory
+    each image comes with a title (which will serve as alt)
+    and an optionnal description-text
+ #}
+
+{#
+    TODO : allow image upload
+    <label for="new_image">Choisissez votre image :</label><br/>
+    <input type="file" id="new_image" name="new_image" required multiple/>
+    <br/><br/>
+#}
+
+<section id="admin_form">
+
+	<form
+		name="admin_form" id="admin_form" method="post" action="" enctype="multipart/form-data">
+
+        {# Space for image/file upload #}
+
+        {# ! TODO Don't forget to add back "required" #}
+
+		<input type="hidden" value="{{ image.id }}" name="id">
+                {% if errors.id is defined %}
+                    <p>Please use a valid id (must match an exisiting input).</p>
+                {% endif %}
+
+		<label for="title">Le titre de votre image :</label><br/>
+		<input type="text" id="title" name="title" value="{{ image.title }}"
+                maxlength="200" size="80"/><br>
+                {% if errors.title is defined %}
+                    <p>Please enter a valid title (200 characters max).</p>
+                {% endif %}
+		<br/><br/>
+
+        <label for="url">L'url de votre image :</label><br/>
+		<input type="text" id="url" name="url" value="{{ image.url }}"
+                maxlength="200" size="80"/><br>
+                {% if errors.url is defined %}
+                    <p>Please enter a valid url (2.048 characters max).</p>
+                {% endif %}
+		<br/><br/>
+
+		<label for="description">La description de votre image :</label><br/>
+		<textarea id="description" name="description"
+                    maxlength="1000" rows="8" cols="75"
+                >{{ image.description }}</textarea><br>
+                {% if errors.description is defined %}
+                    <p>Please enter a valid description (1.000 characters max).</p>
+                {% endif %}
+		<br/><br/>
+
+		<input type="submit" name="submit" value="Upload"/>
+
+	</form>
+
+</section>
+
+{#
+    TODO : get the URL from the stored image and store it in the "url" field of the image table
+    TODO : store the author(=admin) ID of the image in the "user_ID" field of the image table
+    TODO : define the action path of the form
+#}
