@@ -26,7 +26,7 @@
 		class="post">
 
 		{# image 1 post 1, image 2 post 1
-		image 3 post 1, image 4 post 1 #}
+				image 3 post 1, image 4 post 1 #}
 		<div>
 			<img src="https://picsum.photos/200/300?grayscale" alt="image text exemple" class="article-1">
 			<img src="https://picsum.photos/200/300?grayscale" alt="image text exemple" class="article-1">
@@ -42,7 +42,7 @@
 	<section
 		class="post">
 		{# image 1 post 2
-		image 2 post 2 #}
+				image 2 post 2 #}
 		<div>
 			<img src="https://picsum.photos/200/?grayscale" alt="image text exemple">
 		</div>
@@ -53,18 +53,17 @@
 		<button>Modifier l'article</button>
 	</section>
 
-<section class="post">
-{# image 1 post 3 #}
-<div><img src="assets/images/image.jpg" alt="image text exemple"><br></div>
-<p>-</p>
-<button>Modifier l'article</button>
-</section>
-
 	<section
 		class="post">
 		{# image 1 post 3 #}
+		<div><img src="assets/images/image.jpg" alt="image text exemple"><br></div>
 		<p>-</p>
 		<button>Modifier l'article</button>
+	</section>
+
+	<section class="post">
+		<h2>Add a new image</h2>
+		{% include '_Image/component/_form.html.twig' %}
 	</section>
 
 
