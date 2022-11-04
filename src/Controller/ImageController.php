@@ -113,7 +113,7 @@ final class ImageController extends AbstractController
             }
         }
         return $this->twig->render('_Image/add.html.twig', [
-            // TODO add the user input to the return, to save the user input in the form.
+            // TODO add the user input to the return, to save the user input in the form in case of errors.
             'errors' => $errors
         ]);
     }
