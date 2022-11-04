@@ -26,4 +26,12 @@ abstract class AbstractController
         );
         $this->twig->addExtension(new DebugExtension());
     }
+
+    /**
+     * Creating a sanitizing function to clean the user input
+     */
+    protected function sanitizeInput($userInput)
+    {
+        return trim(stripslashes(htmlspecialchars($userInput, ENT_NOQUOTES)));
+    }
 }
