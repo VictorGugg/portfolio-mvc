@@ -47,7 +47,7 @@ abstract class AbstractManager
     }
 
     /**
-     * Delete row form an ID
+     * Delete row from an ID
      */
     public function delete(int $id): void
     {

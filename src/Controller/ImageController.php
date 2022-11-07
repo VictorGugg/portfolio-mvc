@@ -123,12 +123,18 @@ final class ImageController extends AbstractController
      */
     public function delete(): void
     {
-        // ! TODO verify that ID exists
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (
+            $_SERVER['REQUEST_METHOD'] === 'POST'
+            && isset($_POST['id'])
+            && ctype_digit($_POST['id'])
+        ) {
             $id = trim($_POST['id']);
             $imageManager = new ImageManager();
             $imageManager->delete((int)$id);
 
+            header('Location:/images');
+        } else {
+            // TODO : redirect to /error page
             header('Location:/images');
         }
     }
