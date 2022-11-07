@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="/assets/images/favicon.png">
+  
+    <link rel="icon" href="/assets/images/favicon1.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="/assets/images/favicon2.png" media="(prefers-color-scheme: dark)"> 
 
     <title>{% block title %}Portfolio{% endblock %}</title>
 
@@ -12,7 +14,7 @@
     {% block stylesheet %}{% endblock %}
 </head>
 {% block header %}{% endblock %}
-<body>
+<body  {% block bodyClass %}{% endblock %}>
     {% block content %}{% endblock %}
     {% block javascript %}{% endblock %}
 </body>
