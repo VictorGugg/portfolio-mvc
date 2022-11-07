@@ -21,8 +21,7 @@ final class ImageController extends AbstractController
             !isset($_POST["$inputType"])
             || trim($_POST["$inputType"]) === ''
             || strlen($_POST["$inputType"]) > $inputLength
-            // ! TODO make this RegEx functionnal
-            // || preg_match("^[a-zA-Z0-9.,:!?()\-\"'\s]*$^", $_POST["$inputType"])
+            || !preg_match("/^[\w\s\p{L},:.?!()'\"\-\/]*$/u", $_POST["$inputType"])
         ) {
             $errors[$inputType] = true;
         }
