@@ -1,8 +1,10 @@
 {% extends 'layout.html.twig' %}
 
+{% block bodyClass %}class='gallerie'{% endblock %}
+
 {% block content %}
 	<section class='post'>
-		<h1>Images</h1>
+		<h1>Galerie</h1>
 		<ul>
 			{% for image in images %}
 				<li>
@@ -12,11 +14,11 @@
 						{{ image.title }}</a>
 				</li>
 			{% else %}
-				<li>Nothing to display</li>
+				<li>Nothing to display, yet.</li>
 			{% endfor %}
 		</ul>
 		<button>
 			<a href="/">Retour à l'accueil</a>
 		</button>
-	</section>
+	</section>	
 {% endblock %}
