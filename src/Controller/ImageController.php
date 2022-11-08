@@ -64,35 +64,6 @@ final class ImageController extends AbstractController
         return $this->twig->render('_Image/show.html.twig', $dataForm);
     }
 
-/**
-*    public function storeImage(): void
-*{
-*    $errors = [];
-*
-*    if($_SERVER["REQUEST_METHOD"] === "POST" ){
-*        $uploadDirectory = 'public/assets/images';
-*        $uploadFile = $uploadDirectory . basename($_FILES['image']['name']);
-*        $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-*        // TODO check extensions with Sacha
-*        $authorizedExtensions = ['jpg','jpeg','png'];
-*        // TODO check max file size with Sacha
-*        $maxFileSize = 2000000;
-*        if(
-*            !in_array($extension, $authorizedExtensions))
-*        {
-*            $errors[] = 'Veuillez sélectionner une image de type Jpg ou Jpeg ou Png !';
-*        }
-*        if(file_exists($_FILES['avatar']['tmp_name']) && filesize($_FILES['avatar']['tmp_name']) > $maxFileSize)
-*        {
-*            $errors[] = "Votre fichier doit faire moins de 2M !";
-*        }
-*
-*        move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile);
-*    }
-*}
-*/
-
-
     /**
      * Edit a specific image
      */
