@@ -14,12 +14,7 @@
 <section id="admin_form">
 
 	<form
-		name="admin_form" id="admin_form" method="post" action="" enctype="multipart/form-data">
-
-        {# Space for image/file upload #}
-
-        {# ! TODO Don't forget to add back "required" #}
-
+		name="admin_form" id="admin_form" method="post" action="{{ function }}" enctype="multipart/form-data">
 		<input type="hidden" value="{{ image.id }}" name="id">
                 {% if errors.id is defined %}
                     <p>Please use a valid id (must match an exisiting input).</p>
@@ -27,7 +22,7 @@
 
 		<label for="title">Le titre de votre image :</label><br/>
 		<input type="text" id="title" name="title" value="{{ image.title }}"
-                maxlength="200" size="80"/><br>
+                maxlength="200" size="80" required/><br>
                 {% if errors.title is defined %}
                     <p>Please enter a valid title (200 characters max).</p>
                 {% endif %}
@@ -35,7 +30,7 @@
 
         <label for="url">L'url de votre image :</label><br/>
 		<input type="text" id="url" name="url" value="{{ image.url }}"
-                maxlength="200" size="80"/><br>
+                maxlength="2048" size="80" required/><br>
                 {% if errors.url is defined %}
                     <p>Please enter a valid url (2.048 characters max).</p>
                 {% endif %}
@@ -43,7 +38,7 @@
 
 		<label for="description">La description de votre image :</label><br/>
 		<textarea id="description" name="description"
-                    maxlength="1000" rows="8" cols="75"
+                    maxlength="1000" rows="8" cols="75" required
                 >{{ image.description }}</textarea><br>
                 {% if errors.description is defined %}
                     <p>Please enter a valid description (1.000 characters max).</p>

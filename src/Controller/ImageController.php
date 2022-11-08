@@ -58,8 +58,10 @@ final class ImageController extends AbstractController
     {
         $imageManager = new ImageManager();
         $image = $imageManager->selectOneById($id);
+        $dataForm = ['function' => 'images/edit'];
+        $dataForm['image'] = $image;
 
-        return $this->twig->render('_Image/show.html.twig', ['image' => $image]);
+        return $this->twig->render('_Image/show.html.twig', $dataForm);
     }
 
     /**
@@ -131,10 +133,10 @@ final class ImageController extends AbstractController
             $imageManager = new ImageManager();
             $imageManager->delete((int)$id);
 
-            header('Location:/images');
+            header('Location:/gallery');
         } else {
             // TODO : redirect to /error page
-            header('Location:/images');
+            header('Location:/gallery');
         }
     }
 }

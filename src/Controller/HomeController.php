@@ -9,6 +9,7 @@ class HomeController extends AbstractController
      */
     public function index(): string
     {
-        return $this->twig->render('Home/index.html.twig');
+        $dataForm = ['function' => 'images/add'];
+        return $this->twig->render('Home/index.html.twig', $dataForm);
     }
 }
