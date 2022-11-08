@@ -10,7 +10,7 @@ header {
 }
 
 img {
-  max-width: 90%;
+  width: 75%;
   border-radius: 3px;
 }
 
@@ -19,7 +19,7 @@ img {
   flex-direction: column; 
   align-items: center;
   padding: 1rem; 
-  border: 2px solid rgb(245, 237, 243);
+  border: 2px solid rgb(225, 213, 222);
   margin: 2rem;
   border-radius: 100px;
 }
@@ -109,6 +109,11 @@ li{
 height: 100vw;
 } 
 
+.article-1{
+  flex-direction: row;
+  width: 30%;
+}
+
         /* -- RESPONSIVE -- */
   @media screen and (max-width: 900px) {
     .post {
@@ -126,14 +131,20 @@ height: 100vw;
         margin-top: 1rem;
         }
       div{
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
         margin: 4px;
       }
       header img{
         max-width: 100%;
       }
-      .article-1 {
-        max-width: 50%;
+      img{
+        width:90%;
+      }
+      .article-1{
+        flex-direction: column;
+        width: 90%;
       }
     }
 
@@ -156,6 +167,7 @@ height: 100vw;
         background-color:rgb(52, 51, 51);
         border-radius: 2px;
         border-color: rgb(91, 91, 91);
+        color:rgb(206, 216, 225);
      }   
 
       button, .post button, .submit, a{
