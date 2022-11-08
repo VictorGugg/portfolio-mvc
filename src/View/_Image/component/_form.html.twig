@@ -14,7 +14,7 @@
 <section id="admin_form">
 
 	<form
-		name="admin_form" id="admin_form" method="post" action="" enctype="multipart/form-data">
+		name="admin_form" id="admin_form" method="post" action="{{ function }}" enctype="multipart/form-data">
 
         {# Space for image/file upload #}
 
@@ -35,7 +35,7 @@
 
         <label for="url">L'url de votre image :</label><br/>
 		<input type="text" id="url" name="url" value="{{ image.url }}"
-                maxlength="200" size="80"/><br>
+                maxlength="2048" size="80"/><br>
                 {% if errors.url is defined %}
                     <p>Please enter a valid url (2.048 characters max).</p>
                 {% endif %}
