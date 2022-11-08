@@ -14,7 +14,7 @@ return [
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
 
-    'images' => ['ImageController', 'index',],
+    'gallery' => ['ImageController', 'index',],
     'images/edit' => ['ImageController', 'edit', ['id']],
     'images/show' => ['ImageController', 'show', ['id']],
     'images/add' => ['ImageController', 'add',],

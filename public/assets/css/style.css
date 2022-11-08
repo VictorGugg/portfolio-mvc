@@ -2,11 +2,13 @@ body {
     color: #45384c;
     font-family: 'Palatino', Georgia, 'Times New Roman', Times, serif;
     padding: 1rem;
-    background: linear-gradient(rgb(255, 255, 255), rgb(243, 234, 240));
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(243, 234, 240));
+    background-repeat: repeat;
+    height: 100%;
 }
 
 header {
-    text-align: center; 
+    text-align: center;
 }
 
 img {
@@ -16,9 +18,9 @@ img {
 
 .descri {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
-  padding: 1rem; 
+  padding: 1rem;
   border: 2px solid rgb(245, 237, 243);
   margin: 2rem;
   border-radius: 100px;
@@ -38,7 +40,7 @@ img {
     flex-direction: column;
     align-items: center;
     background-color: rgb(230, 223, 228);
-    padding: 1rem; 
+    padding: 1rem;
     border: 2px solid rgb(169, 151, 151);
     margin: 2rem 9rem;
     border-radius: 3px;
@@ -74,7 +76,7 @@ img {
     border-radius: 3px;
     color: #45384c;
   }
-  
+
   a {
     text-decoration: none;
     color: #45384c;
@@ -86,9 +88,9 @@ img {
 
 .newImage{
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
-  padding: 1rem; 
+  padding: 1rem;
   border: 2px solid rgb(245, 237, 243);
   margin: 2rem;
   border-radius: 100px;
@@ -105,18 +107,35 @@ li{
   list-style-type: "☆ ";
 }
 
-.gallerie{
-height: 100vw;
-} 
+#navButtons button {
+    margin: 0 1rem;
+}
+
+#backToImage {
+    position: absolute;
+    margin: 0 9rem;
+}
+
+#deleteButton {
+    background-color: rgb(121, 70, 70);
+    font-weight: 700;
+}
 
         /* -- RESPONSIVE -- */
   @media screen and (max-width: 900px) {
     .post {
     margin: 1rem;
     }
+
     body{
-      padding: 0%;
-      margin: 4px;
+    padding: 0%;
+    margin: 4px;
+    height: 100%;
+    }
+
+    #backToImage {
+    position: absolute;
+    margin: 0.7rem 1.4rem;
     }
   }
 
@@ -140,23 +159,25 @@ height: 100vw;
               /* -- AUTOMATIC DARK MODE -- */
      @media (prefers-color-scheme: dark) {
       body {
-        background: linear-gradient(rgb(31, 31, 31), rgb(13, 13, 13));
+        background-image: linear-gradient(rgb(31, 31, 31), rgb(13, 13, 13));
         color:rgba(170, 170, 170, 0.792);
+        height: 100%;
       }
       .descri{
         border-color: rgb(100, 100, 100);
       }
       .post{
-        background: linear-gradient( rgb(31, 31, 31),rgb(58, 58, 58));
+        background-image: linear-gradient( rgb(31, 31, 31),rgb(58, 58, 58));
         border-color: rgb(50, 50, 50);
-        color: 2px solid rgb(97, 97, 97); 
+        color: 2px solid rgb(97, 97, 97);
       }
 
       #description, #url, #title{
         background-color:rgb(52, 51, 51);
         border-radius: 2px;
         border-color: rgb(91, 91, 91);
-     }   
+        color: rgb(206, 216, 225)
+     }
 
       button, .post button, .submit, a{
         color:rgba(196, 197, 198, 0.749);
@@ -166,4 +187,4 @@ height: 100vw;
       .post p{
         border-top: 2px solid rgba(111, 111, 111, 0.642);
       }
-    } 
+    }
