@@ -21,8 +21,7 @@ final class ImageController extends AbstractController
             !isset($_POST["$inputType"])
             || trim($_POST["$inputType"]) === ''
             || strlen($_POST["$inputType"]) > $inputLength
-            // ! TODO make this RegEx functionnal
-            // || preg_match("^[a-zA-Z0-9.,:!?()\-\"'\s]*$^", $_POST["$inputType"])
+            || !preg_match("/^[\w\s\p{L},:.?!()'\"\-\/]*$/u", $_POST["$inputType"])
         ) {
             $errors[$inputType] = true;
         }
@@ -123,12 +122,18 @@ final class ImageController extends AbstractController
      */
     public function delete(): void
     {
-        // ! TODO verify that ID exists
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (
+            $_SERVER['REQUEST_METHOD'] === 'POST'
+            && isset($_POST['id'])
+            && ctype_digit($_POST['id'])
+        ) {
             $id = trim($_POST['id']);
             $imageManager = new ImageManager();
             $imageManager->delete((int)$id);
 
+            header('Location:/images');
+        } else {
+            // TODO : redirect to /error page
             header('Location:/images');
         }
     }
