@@ -1,24 +1,31 @@
 {% extends 'layout.html.twig' %}
 
-{% block bodyClass %}class='gallerie'{% endblock %}
+{% block title %}
+	{{ parent () }}
+	- Galerie
+{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/galleryStyle.css">
+{% endblock %}
 
 {% block content %}
-	<section class='post'>
-		<h1>Galerie</h1>
-		<ul>
-			{% for image in images %}
-				<li>
-					<a href="/images/show?id={{ image.id }}">
-						{{ image.id }}
-						.
-						{{ image.title }}</a>
-				</li>
-			{% else %}
-				<li>Nothing to display, yet.</li>
-			{% endfor %}
-		</ul>
+	<section id="mainPageButton">
 		<button>
 			<a href="/">Retour à l'accueil</a>
 		</button>
-	</section>	
+	</section>
+	<section class='post'>
+		<h1>Galerie</h1>
+		<section class="galleryImage">
+			{% for image in images %}
+				<div>
+					<a href="/images/show?id={{ image.id }}" class="displayImage">
+						<img src="{{ image.url }}" alt="{{ image.title }}">
+					</a>
+				</div>
+			{% else %}
+				<p>Nothing to display, yet.</p>
+			{% endfor %}
+		</section>
+	</section>
 {% endblock %}

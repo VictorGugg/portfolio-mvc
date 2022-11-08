@@ -1,8 +1,26 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}
+	{{ parent () }}
+	-
+			Éditer "{{ image.title }}"
+{% endblock %}
+
+{% block stylesheet %}
+	<style>
+		body {
+			height: 100vh;
+		}
+	</style>
+{% endblock %}
+
 {% block content %}
-	<h1>Edit image
-		{{ image.title }}</h1>
-	{% include '_Image/component/_form.html.twig' %}
-	<a href="/images/show?id={{ image.id }}">Back</a>
+	<button id="backToImage">
+		<a href="/images/show?id={{ image.id }}">Back</a>
+	</button>
+	<section class="post">
+		<h1>Edit image
+			{{ image.title }}</h1>
+		{% include '_Image/component/_form.html.twig' %}
+	</section>
 {% endblock %}

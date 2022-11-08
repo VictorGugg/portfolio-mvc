@@ -1,18 +1,44 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}
+	{{ parent () }}
+	-
+	{{ image.title }}
+{% endblock %}
+
+{% block stylesheet %}
+	<style>
+		body {
+			height: 100vh;
+		}
+	</style>
+{% endblock %}
+
+
 {% block content %}
-	<h1>Image title :<br>
-		{{ image.title }}</h1>
-	<p>Image description :<br>
-		{{ image.description }}</p>
-	<p>Image ID + URL :<br>
-		{{ image.id }}
-		.
-		{{ image.url }}</p>
-	<a href="/images/edit?id={{ image.id }}">Edit</a>
-	<form action="/images/delete" method="POST">
-		<input type="hidden" name="id" value="{{ image.id }}">
-		<button>Delete</button>
-	</form>
-	<a href="/images">Back</a>
+
+	<section class="post">
+
+		<h1>{{ image.title }}</h1>
+
+		<img src="{{ image.url }}" alt="{{ image.title }}">
+
+		<p>{{ image.description }}</p>
+
+		<div id="navButtons">
+			<button>
+				<a href="/images/edit?id={{ image.id }}">Edit</a>
+			</button>
+
+			<form action="/images/delete" method="POST">
+				<input type="hidden" name="id" value="{{ image.id }}">
+				<button id="deleteButton">⚠ Delete ⚠</button>
+			</form>
+
+			<button>
+				<a href="/gallery">Back</a>
+			</button>
+		</div>
+
+	</section>
 {% endblock %}
