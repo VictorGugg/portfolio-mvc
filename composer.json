@@ -1,10 +1,12 @@
 {
-    "name": "wildcodeschool/simple-mvc",
-    "description": "Simple from scratch PHP MVC for WildCodeSchool students",
+    "name": "VictorGugg/portfolio",
+    "description": "A basic portfolio for my fellow graphist-coder Sacha. Our first project at Wild Code School, based on the template 'simple MVC' from Aurélien Barbier",
     "authors": [
         {
-            "name": "Aurelien",
-            "email": "aurelien.barbier@wildcodeschool.com"
+            "name": "Victor",
+            "email": "victor.guggenbuhl@gmail.com",
+            "name": "Sacha",
+            "email": "degiorgiosacha@gmail.com"
         }
     ],
     "minimum-stability": "stable",
